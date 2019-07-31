@@ -1,5 +1,9 @@
-import Router from 'vue-router'
-import Vue from 'vue'
+import Router from 'vue-router';
+import Vue from 'vue';
+import HomePage from '@/components/pages/HomePage';
+import BlogsPage from '@/components/pages/BlogsPage';
+import ManagePage from '@/components/pages/ManagePage';
+import Nav from '@/components/Nav';
 
 Vue.use(Router);
 
@@ -8,33 +12,22 @@ export default new Router({
         {
             path: '/home',
             components: {
-
+                default: HomePage,
+                Nav
             }
         },
         {
-            path: '/blog',
+            path: '/blogs',
             components: {
-
-            }
-        },
-        {
-            path: '/login',
-            components: {
-
+                default: BlogsPage,
+                Nav
             }
         },
         {
             path: '/manage',
             components: {
-
-            },
-            beforeEnter (to, from, next) {
-                if (true) {
-                    next('/login')
-                }
-                else {
-                    next()
-                }
+                default: ManagePage,
+                Nav
             }
         },
         {
@@ -47,6 +40,5 @@ export default new Router({
             x: 0,
             y: 0
         };
-    },
-    
+    }
 });
