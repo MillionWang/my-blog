@@ -4,6 +4,8 @@ import HomePage from '@/components/pages/HomePage';
 import BlogsPage from '@/components/pages/BlogsPage';
 import ManagePage from '@/components/pages/ManagePage';
 import Nav from '@/components/Nav';
+import ArticleTable from '@/components/manageComponents/ArticleTable';
+import ArticleForm from '@/components/manageComponents/ArticleForm';
 
 Vue.use(Router);
 
@@ -28,7 +30,33 @@ export default new Router({
             components: {
                 default: ManagePage,
                 Nav
-            }
+            },
+            children: [
+                {
+                    path: '/',
+                    components: {
+                        ArticleTable
+                    }
+                },
+                {
+                    path: 'add',
+                    components: {
+                        ArticleForm
+                    }
+                },
+                {
+                    path: 'edit',
+                    components: {
+                        ArticleForm
+                    }
+                },
+                {
+                    path: 'tags',
+                    components: {
+                        
+                    }
+                }
+            ]
         },
         {
             path: '*',

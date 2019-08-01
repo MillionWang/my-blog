@@ -15,7 +15,7 @@ export default {
 
     },
     created () {
-        this.$axios('test').then(res => {
+        this.$axios('query/articles').then(res => {
             console.log(res)
         })
     }
