@@ -45,6 +45,9 @@
 
 <style lang="less" scoped>
 .articles-table {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 30px;
     margin-top: 20px;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
     <div class="top-bar">
         <div class="header">
-            <span class="header-item header-item-title">{{ mainTitle }}/</span>
-            <span class="header-item header-item-subtitle">{{ name }}</span>
+            <span class="header-item header-item-title">{{ mainTitle }} / </span>
+            <span class="header-item header-item-subtitle">{{ subTitle }}</span>
         </div>
         <div class="top-button">
             <router-link to="/manage/add">
-                <el-button type="primary" @click="changeSubTitle">
+                <el-button type="primary">
                     新增文档
                     <i class="el-icon-circle-plus el-icon--right"></i>
                 </el-button>
@@ -17,36 +17,34 @@
 
 <script>
 export default {
-    props: {
-        title: {
-            type: String
-        },
-        subTitle: {
-            type: String
-        }
-    },
     data () {
         return {
-            mainTitle: '',
-            name: ''
+            mainTitle: '管理面板',
+            subTitle: ''
         }
     },
     watch: {
-        title () {
-            this.mainTitle = this.title;
-        },
-        subTitle () {
-            this.name = this.subTitle;
+        $route () {
+            this.getSubTitle();
         }
     },
     methods: {
-        changeSubTitle () {
-            this.name = '新增文档';
+        getSubTitle () {
+            switch (this.$route.path) {
+                case '/manage':
+                    this.subTitle = '文章管理';
+                    break;
+                case '/manage/add':
+                    this.subTitle = '新增文档';
+                    break;
+                case '/manage/tags':
+                    this.subTitle = '标签管理';
+                    break;
+            }
         }
     },
     created () {
-        this.mainTitle = this.title;
-        this.name = this.subTitle;
+        this.getSubTitle();
     }
 }
 </script>

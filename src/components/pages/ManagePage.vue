@@ -1,8 +1,8 @@
 <template>
     <div class="manage-page">
-        <manage-nav @navItemClick="navItemClick"></manage-nav>
+        <manage-nav></manage-nav>
         <div class="left-content">
-            <top-bar :title="title" :subTitle="subTitle"></top-bar>
+            <top-bar></top-bar>
             <router-view name="ArticleTable"></router-view>
             <router-view name="ArticleForm"></router-view>
         </div>
@@ -20,8 +20,7 @@ export default {
     },
     data () {
         return {
-            title: '管理面板',
-            subTitle: '文章管理'
+
         }
     },
     methods: {

@@ -23,7 +23,7 @@ export const manageNavItems = [
         items: [
             {
                 name: '文章管理',
-                path: '/'
+                path: ''
             },
             {
                 name: '标签管理',

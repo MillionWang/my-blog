@@ -7,7 +7,7 @@
                     <span>{{ item.title }}</span>
                 </template>
                 <el-menu-item v-for="(subItem, subIndex) in item.items" :key="index + '-' + subIndex"
-                    :index="getSubIndex(index, subIndex)" @click="handleClick(item.title, subItem)">
+                    :index="getSubIndex(index, subIndex)" @click="handleClick(subItem)">
                     {{ subItem.name }}
                 </el-menu-item>
             </el-submenu>
@@ -26,9 +26,8 @@ export default {
         }
     },
     methods: {
-        handleClick (title, subItem) {
+        handleClick (subItem) {
             this.$router.push({path: `/manage${subItem.path}`});
-            this.$emit('navItemClick', title, subItem.name);
         },
         getSubIndex (index, subIndex) {
             index = index + 1;
