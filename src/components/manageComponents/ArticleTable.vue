@@ -1,45 +1,48 @@
 <template>
     <div class="articles-table">
-        <el-table :data="tableData" style="width: 100%" :default-sort="{prop: 'date', order: 'descending'}">
-            <el-table-column prop="date" label="日期" sortable width="180">
+        <el-table :data="articles" style="width: 100%">
+            <el-table-column prop="date" label="日期" width="130">
             </el-table-column>
-            <el-table-column prop="name" label="姓名" sortable width="180">
+            <el-table-column prop="category" label="分类" width="180">
             </el-table-column>
-            <el-table-column prop="address" label="地址" :formatter="formatter">
+            <el-table-column prop="title" label="标题">
+            </el-table-column>
+            <el-table-column width="250" align="right">
+                <el-button size="mini">查看</el-button>
+                <el-button type="primary" size="mini">编辑</el-button>
+                <el-button type="danger" size="mini">删除</el-button>
             </el-table-column>
         </el-table>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                tableData: [{
-                    date: '2016-05-02',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1518 弄'
-                }, {
-                    date: '2016-05-04',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1517 弄'
-                }, {
-                    date: '2016-05-01',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1519 弄'
-                }, {
-                    date: '2016-05-03',
-                    name: '王小虎',
-                    address: '上海市普陀区金沙江路 1516 弄'
-                }]
-            }
-        },
-        methods: {
-            formatter(row, column) {
-                return row.address;
-            }
+import {parseDate} from '@/assets/js/utils';
+import { parse } from 'path';
+
+export default {
+    data() {
+        return {
+            articles: []
         }
+    },
+    methods: {
+        formatter(row, column) {
+            return row.address;
+        }
+    },
+    created () {
+        this.$axios('/query/articles').then(res => {
+            this.articles = res && res.data && res.data.result;
+            this.articles.forEach(item => {
+                if (item.date) {
+                    item.date = parseDate(item.date);
+                }
+            });
+            console.log(this.articles)
+        });
     }
+}
 </script>
 
 

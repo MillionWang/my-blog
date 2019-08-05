@@ -43,7 +43,9 @@ export default {
         clear: both;
     }
     .left-content {
-        margin-left: 330px;
+        padding: 10px 30px 30px;
+        margin-left: 300px;
+        background-color: #f9f9f9;
     }
 }
 </style>
