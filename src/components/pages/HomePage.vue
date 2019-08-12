@@ -1,6 +1,5 @@
 <template>
     <div>
-        home
         <articles-list></articles-list>
     </div>
 </template>

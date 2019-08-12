@@ -1,3 +1,8 @@
+/*
+ * @File: 
+ * @Author: wangzhongpeng
+ * @Date: 2019-08-01 20:56:46
+ */
 import Router from 'vue-router';
 import Vue from 'vue';
 import HomePage from '@/components/pages/HomePage';
@@ -45,7 +50,7 @@ export default new Router({
                     }
                 },
                 {
-                    path: 'edit',
+                    path: 'edit/:id',
                     components: {
                         ArticleForm
                     }

@@ -1,3 +1,8 @@
+<!--
+ * @File: 
+ * @Author: wangzhongpeng
+ * @Date: 2019-08-01 19:48:20
+ -->
 <template>
     <div class="article-form">
         <div class="title-container">
@@ -37,6 +42,7 @@
 </template>
 
 <script>
+import { setTimeout } from 'timers';
 export default {
     data () {
         return {
@@ -67,6 +73,9 @@ export default {
                         message: '保存成功',
                         type: 'success'
                     });
+                    setTimeout(() => {
+                        this.goBackToManagePage();
+                    }, 500)
                 }
                 else {
                     reject('保存失败');
@@ -74,6 +83,9 @@ export default {
             }).catch(err => {
                 this.$message.error(err);
             });
+        },
+        goBackToManagePage () {
+            this.$router.push('/manage');
         },
         validateData () {
             return new Promise((resolve, reject) => {
@@ -90,7 +102,7 @@ export default {
                 cancelButtonText: '取消',
                 type: 'warning'
             }).then(() => {
-                this.$router.push('/manage');
+                this.goBackToManagePage();
             })
         }
     }
